@@ -3,6 +3,12 @@
 ## Part 0 - Exercises 0.1.-0.6. (0.4.-0.6., submit)
 ### Fundamentals of web apps
 
+<div align="center">
+
 ~~~ 
-In this part we work with HTTP requests, focusing on client-server communication.
+In this part, we will familiarize ourselves with the practicalities of taking the course. 
+After that we will have an overview of the basics of web development, and also talk about
+the advances in web application development during the last few decades
 ~~~
+
+</div>
