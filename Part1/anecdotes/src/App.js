@@ -15,6 +15,27 @@ const Anecdote = ({ text, votes }) => (
   </div>
 );
 
+const Header = ({ header }) => (
+  <div>
+    <h2>{header}</h2>
+  </div>
+);
+
+const MostVoted = ({ anecdotes, votes }) => {
+  const largestNumVotes = Math.max(...votes);
+  const mostVotedAnecdote = votes.indexOf(largestNumVotes);
+
+  return (
+    <>
+      {largestNumVotes === 0 ? (
+        <p>no votes yet</p>
+      ) : (
+        <Anecdote text={anecdotes[mostVotedAnecdote]} votes={largestNumVotes} />
+      )}
+    </>
+  );
+};
+
 const App = () => {
   const anecdotes = [
     "If it hurts, do it more often.",
@@ -41,9 +62,12 @@ const App = () => {
 
   return (
     <>
+      <Header header="Anecdote of the day" />
       <Anecdote text={anecdotes[selected]} votes={votes[selected]} />
       <Button handleClick={voteAnecdote} text="vote" />
       <Button handleClick={randomAnecdote} text="next anecdote" />
+      <Header header="Anecdote with most votes" />
+      <MostVoted anecdotes={anecdotes} votes={votes} />
     </>
   );
 };
