@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+.quote{
+  font-style: italic;
+  font-weight: bold;
+  font-size:20px;
+}
+
+.btnAnecdotes{
+  background-color: white;
+  border-radius:5px;
+  border-color: rgb(201, 199, 199);
+  cursor:pointer;
+}
