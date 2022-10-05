@@ -1,13 +1,48 @@
 import React, { useState } from "react";
 import "./App.css";
 
+// button component
 const Button = (props) => (
   <button onClick={props.handleClick} className="btnUnicafe">
     {props.text}
   </button>
 );
 
-// a proper place to define a component
+// statisticLine component
+const StatisticLine = ({ text, value }) => {
+  //having fun here with ternary, just for fun
+  return (
+    <div>
+      {text === "positive" ? (
+        <span>
+          {text} {value} %
+        </span>
+      ) : text === "good" ? (
+        <span className="spanGreen">
+          {text} {value}
+        </span>
+      ) : text === "bad" ? (
+        <span className="spanRed">
+          {text} {value}
+        </span>
+      ) : text === "average" && value > 0 ? (
+        <span className="spanGreen">
+          {text} {value}
+        </span>
+      ) : text === "average" && value < 0 ? (
+        <span className="spanRed">
+          {text} {value}
+        </span>
+      ) : (
+        <span>
+          {text} {value}
+        </span>
+      )}
+    </div>
+  );
+};
+
+// statistics component
 const Statistics = ({ good, neutral, bad }) => {
   let sum = good + neutral + bad;
   let average = (good - bad) / sum;
@@ -25,19 +60,12 @@ const Statistics = ({ good, neutral, bad }) => {
   return (
     <div>
       <h2>statistics</h2>
-      <span className="spanGreen">good {good}</span>
-      <br></br>
-      <span>neutral {neutral}</span>
-      <br></br>
-      <span className="spanRed">bad {bad}</span>
-      <br></br>
-      <span>all {sum ? sum : 0}</span>
-      <br></br>
-      <span className={average > 0 ? "spanGreen" : "spanRed"}>
-        average {average ? average : 0}
-      </span>
-      <br></br>
-      <span>positive {positive ? positive + " %" : 0}</span>
+      <StatisticLine text="good" value={good} />
+      <StatisticLine text="neutral" value={neutral} />
+      <StatisticLine text="bad" value={bad} />
+      <StatisticLine text="all" value={sum} />
+      <StatisticLine text="average" value={average} />
+      <StatisticLine text="positive" value={positive} />
     </div>
   );
 };
