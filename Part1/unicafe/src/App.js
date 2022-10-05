@@ -13,14 +13,23 @@ const Statistics = ({ good, neutral, bad }) => {
   let average = (good - bad) / sum;
   let positive = (good / sum) * 100;
 
+  if (sum === 0) {
+    return (
+      <div>
+        <h2>statistics</h2>
+        <div>No feedback given</div>
+      </div>
+    );
+  }
+
   return (
     <div>
       <h2>statistics</h2>
-      <span>good {good}</span>
+      <span className="spanGreen">good {good}</span>
       <br></br>
       <span>neutral {neutral}</span>
       <br></br>
-      <span>bad {bad}</span>
+      <span className="spanRed">bad {bad}</span>
       <br></br>
       <span>all {sum ? sum : 0}</span>
       <br></br>
