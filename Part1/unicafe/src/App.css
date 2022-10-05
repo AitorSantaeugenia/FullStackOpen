@@ -43,3 +43,10 @@
   border-color: grey;
   cursor:pointer;
 }
+
+.spanGreen{
+  color:green;
+}
+.spanRed{
+  color:red;
+}
