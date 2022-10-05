@@ -50,3 +50,7 @@
 .spanRed{
   color:red;
 }
+
+td{
+  min-width: 80px;
+}
