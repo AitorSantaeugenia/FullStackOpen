@@ -12,33 +12,39 @@ const Button = (props) => (
 const StatisticLine = ({ text, value }) => {
   //having fun here with ternary, just for fun
   return (
-    <div>
+    <>
       {text === "positive" ? (
-        <span>
-          {text} {value} %
-        </span>
+        <tr>
+          <td>{text}</td>
+          <td>{value} %</td>
+        </tr>
       ) : text === "good" ? (
-        <span className="spanGreen">
-          {text} {value}
-        </span>
+        <tr>
+          <td>{text}</td>
+          <td className="spanGreen">{value}</td>
+        </tr>
       ) : text === "bad" ? (
-        <span className="spanRed">
-          {text} {value}
-        </span>
+        <tr>
+          <td>{text}</td>
+          <td className="spanRed">{value}</td>
+        </tr>
       ) : text === "average" && value > 0 ? (
-        <span className="spanGreen">
-          {text} {value}
-        </span>
+        <tr>
+          <td>{text}</td>
+          <td className="spanGreen">{value}</td>
+        </tr>
       ) : text === "average" && value < 0 ? (
-        <span className="spanRed">
-          {text} {value}
-        </span>
+        <tr>
+          <td>{text}</td>
+          <td className="spanRed">{value}</td>
+        </tr>
       ) : (
-        <span>
-          {text} {value}
-        </span>
+        <tr>
+          <td>{text}</td>
+          <td>{value} </td>
+        </tr>
       )}
-    </div>
+    </>
   );
 };
 
