@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.btnUnicafe{
+  background-color: white;
+  border-radius:5px;
+  border-color: grey;
+  cursor:pointer;
+}
