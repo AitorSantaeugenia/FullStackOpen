@@ -1,9 +1,8 @@
 # University of Helsinki - Full Stack Open 2022-2023
 
-## Part 1 - Exercises 1.1.-1.5.
+## Part 1 - unicafe -| Exercises 1.6.-1.12.
 ### Fundamentals of web apps
-- a) Introduction to react -| 1.1 - 1.2
-- b) JavaScript -| Exercises 1.3 - 1.5
+- d) A more complex state, debugging React apps -| 1.6 - 1.12
 
 <div align="center">
 

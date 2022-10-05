@@ -1,8 +1,11 @@
 # University of Helsinki - Full Stack Open 2022-2023
 
-## Part 1 - Exercises 1.6.-1.11.
+## Part 1 - Exercises 1.1.-1.14.
 ### Introduction to ReactJS
-- d) A more complex state, debugging React apps -| Exercises 1.6 - 1.11
+- a) Introduction to react -| Exercises 1.1 - 1.2
+- b) JavaScript -| Exercises 1.3 - 1.5
+- c) Component state, event handlers
+- d) A more complex state, debugging React apps -| Exercises 1.6 - 1.14
 
 <div align="center">
 
