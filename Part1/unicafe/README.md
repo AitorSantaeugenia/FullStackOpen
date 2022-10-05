@@ -2,7 +2,7 @@
 
 ## Part 1 - unicafe -| Exercises 1.6.-1.12.
 ### Fundamentals of web apps
-- d) A more complex state, debugging React apps -| 1.6 - 1.12
+- d) A more complex state, debugging React apps -| Exercises 1.6 - 1.12
 
 ~~~ 
 In this part, we will familiarize ourselves with the React-library, 
