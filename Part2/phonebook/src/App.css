@@ -40,3 +40,21 @@ html{
     transform: rotate(360deg);
   }
 }
+
+
+.tdPadding{
+  padding-right:10px;
+  border-right: 2px solid black;
+}
+
+.tdPaddingLeft{
+  padding-left:10px;
+}
+
+.spanPaddingRight{
+  padding-right:10px;
+}
+
+.inputMarginLeft{
+  margin-left:16px;
+}
