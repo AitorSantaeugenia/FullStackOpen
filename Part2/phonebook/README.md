@@ -2,7 +2,7 @@
 
 ## Part 2 - Exercises 2.6.-2.10.
 ### Comunicating with the server
-- a) Forms -| Exercises 2.6 - 2.10
+- b) Forms -| Exercises 2.6 - 2.10
 
 ~~~ 
 Let's continue our introduction to React. First, we will take a look at how to render a data collection,
