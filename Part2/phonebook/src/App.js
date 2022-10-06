@@ -1,25 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import FilterForm from "./components/FilterForm";
 import Form from "./components/Form";
 import PersonData from "./components/PersonData";
+import axios from "axios";
 
 const App = () => {
-  //New object with more persons
-  const [persons, setPersons] = useState([
-    { name: "Arto Hellas", number: "040-123456" },
-    { name: "Ada Lovelace", number: "39-44-5323523" },
-    { name: "Dan Abramov", number: "12-43-234345" },
-    { name: "Mary Poppendieck", number: "39-23-6423122" },
-  ]);
+  const [persons, setPersons] = useState([]);
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filter, setFilter] = useState("");
 
+  useEffect(() => {
+    axios.get("http://localhost:3001/persons").then((response) => {
+      setPersons(response.data);
+    });
+  }, []);
+
   const addNewPerson = (e) => {
     e.preventDefault();
-
-    console.log(newNumber);
 
     const newObject = {
       name: newName,
@@ -45,14 +44,12 @@ const App = () => {
 
   const handlePhoneNumber = (e) => {
     e.preventDefault();
-    // console.log("e", e.target.value);
 
     setNewNumber(e.target.value);
   };
 
   const handleFilter = (e) => {
     e.preventDefault();
-    // console.log(e.target.value);
     setFilter(e.target.value);
   };
 
