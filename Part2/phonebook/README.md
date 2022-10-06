@@ -1,8 +1,9 @@
 # University of Helsinki - Full Stack Open 2022-2023
 
-## Part 2 - Exercises 2.6.-2.10.
+## Part 2 - Exercises 2.6.-2.10. && 2.11
 ### Comunicating with the server
 - b) Forms -| Exercises 2.6 - 2.10
+- c) Getting data from server -| Exercises 2.11
 
 ~~~ 
 Let's continue our introduction to React. First, we will take a look at how to render a data collection,
