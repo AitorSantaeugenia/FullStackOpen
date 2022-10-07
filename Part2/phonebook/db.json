@@ -33,49 +33,9 @@
     },
     {
       "name": "Agregar",
-      "number": "333",
+      "number": "2",
       "id": 9,
       "newNumber": "1"
-    },
-    {
-      "name": "QWER",
-      "number": "1",
-      "id": 10
-    },
-    {
-      "name": "test",
-      "number": "1",
-      "id": 11
-    },
-    {
-      "name": "asd",
-      "number": "1",
-      "id": 12
-    },
-    {
-      "name": "asdddd",
-      "number": "1",
-      "id": 13
-    },
-    {
-      "name": "tttt",
-      "number": "1",
-      "id": 14
-    },
-    {
-      "name": "asdasd111",
-      "number": "12",
-      "id": 15
-    },
-    {
-      "name": "asdeee",
-      "number": "1",
-      "id": 16
-    },
-    {
-      "name": "testaaa",
-      "number": "1",
-      "id": 17
     }
   ]
 }
