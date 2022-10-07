@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./App.css";
+import Countries from "./components/Countries";
+import Filter from "./components/Filter";
 
 function App() {
+  const [countries, setCountries] = useState([]);
+  const [filter, setFilter] = useState("");
+
+  //Better use v2.0 to not have a problem with maps in language
+  //https://restcountries.com/v3.1/all - We will try it later again with v3
+  useEffect(() => {
+    axios.get("  https://restcountries.com/v2/all").then((response) => {
+      setCountries(response.data);
+    });
+  }, []);
+
+  const handleFilter = (e) => {
+    e.preventDefault();
+    setFilter(e.target.value);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Filter countries={countries} handleFilter={handleFilter} />
+      <Countries countries={countries} country={filter} />
     </div>
   );
 }
