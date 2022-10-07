@@ -2,8 +2,9 @@
   "persons": [
     {
       "name": "Arto Hellas",
-      "number": "040-123456",
-      "id": 1
+      "number": "333-333659",
+      "id": 1,
+      "newNumber": "1"
     },
     {
       "name": "Dan Abramov",
@@ -29,6 +30,17 @@
       "name": "aitormenta",
       "number": "5566332211",
       "id": 8
+    },
+    {
+      "name": "Agregar",
+      "number": "333",
+      "id": 9,
+      "newNumber": "1"
+    },
+    {
+      "name": "QWER",
+      "number": "1",
+      "id": 10
     }
   ]
 }
