@@ -44,8 +44,27 @@ html{
 
 .countryFlag{
   max-width: 180px;
+  border:1px solid black;
 }
 
 .minWidthTd{
   min-width: 100px;
+}
+
+.btnCountries{
+  background-color: white;
+  border-radius:5px;
+  border-color: grey;
+  cursor:pointer;
+}
+
+.btnCountries:hover{
+  background-color:rgba(212, 212, 212, 0.24);
+}
+
+.marginBottomDiv{
+  margin-bottom:80px;
+  border:1px solid black;
+  padding:5px;
+  max-width: 60vw;
 }
