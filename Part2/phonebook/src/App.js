@@ -3,7 +3,6 @@ import "./App.css";
 import FilterForm from "./components/FilterForm";
 import Form from "./components/Form";
 import PersonData from "./components/PersonData";
-import axios from "axios";
 import services from "./services/services";
 
 const App = () => {
@@ -56,6 +55,18 @@ const App = () => {
     setFilter(e.target.value);
   };
 
+  const handleDelete = (id) => {
+    const deletePerson = persons.find((person) => person.id === id);
+    const confirm = window.confirm(`Delete ${deletePerson.name}?`);
+
+    if (confirm) {
+      services.remove(id).then((toRemovePerson) => {
+        persons.map((person) => (person.id !== id ? person : toRemovePerson));
+      });
+      setPersons(persons.filter((person) => person.id !== id));
+    }
+  };
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -78,7 +89,7 @@ const App = () => {
                 : null;
             })
             .map((person) => (
-              <PersonData name={person.name} number={person.number} />
+              <PersonData person={person} handleDelete={handleDelete} />
             ))}
         </tbody>
       </table>
