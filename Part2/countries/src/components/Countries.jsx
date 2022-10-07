@@ -1,4 +1,63 @@
 import React from 'react'
+import { useState } from "react";
+
+
+const SingleCountry = ({country}) => {
+    const [state, setState] = useState(false)
+
+    const handleClick = () =>{
+        setState(!state)
+    }
+
+    return(
+        <>
+        <tr> 
+            {/* v3 */}
+            {/* {country.name.common} */}
+            <td>
+            {country.name}
+            </td>
+            <td><button className="btnCountries" onClick={handleClick}>Show more</button></td>
+        </tr>
+        {state && <CountryInformation country={country}/>}
+        </>
+    )
+}
+
+const CountryInformation = ({country}) =>(
+    <div className="marginBottomDiv">
+        {/* v3 api */}
+        {/* {filteredCountry[0].name.common} */}  
+        <h1>{country.name}</h1>
+        <table>
+            <tbody>
+                <tr>
+                    <td className="minWidthTd">
+                    capital 
+                    </td>
+                    <td>
+                    {country.capital}
+                    </td>
+                </tr>
+                <tr>
+                <td className="minWidthTd">
+                population
+                </td>
+                <td>
+                    {country.population}
+                </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2>languages</h2>
+        <ul>
+            {country.languages.map(language => <li key={language.name}>{language.name}</li>)}
+        </ul> 
+        {/* V3 api*/}
+        {/* <img src={filteredCountry[0].flags.png} className="countryFlag" alt={filteredCountry[0].name + " flag"}/> */}
+        <img src={country.flag} className="countryFlag" alt={country.name + " flag"}/>
+    </div>
+)
 
 const Countries = ({ countries, country }) => {
     let filteredCountry = [];
@@ -17,52 +76,19 @@ const Countries = ({ countries, country }) => {
     
       } else if (filteredCountry.length === 1) {
         return (
-          <div>
-              {/* v3 api */}
-              {/* {filteredCountry[0].name.common} */}
-            <h1>{filteredCountry[0].name}</h1>
-            <table>
-                <tbody>
-                    <tr>
-                        <td className="minWidthTd">
-                        capital 
-                        </td>
-                        <td>
-                        {filteredCountry[0].capital}
-                        </td>
-                    </tr>
-                    <tr>
-                    <td className="minWidthTd">
-                    population
-                    </td>
-                    <td>
-                         {filteredCountry[0].population}
-                    </td>
-                    </tr>
-                </tbody>
-            </table>
-            <h2>languages</h2>
-               <ul>
-                {filteredCountry[0].languages.map(language => <li key={language.name}>{language.name}</li>)}
-              </ul> 
-              {/* V3 api*/}
-              {/* <img src={filteredCountry[0].flags.png} className="countryFlag" alt={filteredCountry[0].name + " flag"}/> */}
-            <img src={filteredCountry[0].flag} className="countryFlag" alt={filteredCountry[0].name + " flag"}/>
-          </div>
+           <CountryInformation country={filteredCountry[0]}/>
             )
       } else {
         return (
           <div>
-            <ul>
+            <table>
+                <tbody>
               {filteredCountry.map(country =>
-            <li key={country.name}>
-                {/* v3 */}
-                {/* {country.name.common} */}
-                {country.name}
-            </li>
-             
+                <SingleCountry country={country} />             
               )}
-            </ul>
+              </tbody>
+            </table>
+           
           </div>
         )
       }
