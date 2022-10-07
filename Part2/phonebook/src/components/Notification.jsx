@@ -4,9 +4,17 @@ const Notification = ({ message }) => {
     }
   
     return (
-      <div className='error'>
-        {message}
-      </div>
+      <div>
+      {console.log(message)}
+      {message.startsWith("Add") || message.startsWith("Up") ?       
+      <div className="errorRight">
+          {message}
+      </div>:      
+      
+      <div className="errorWrong">
+          {message}
+      </div>}
+    </div>
     )
   }
 
