@@ -1,40 +1,48 @@
 import React from 'react'
+import Weather from "./../components/Weather"
 
 const CountryInformation = ({country}) =>(
-    <tr className="marginBottomDiv">
-        <td>
-        {/* v3 api */}
-        {/* {filteredCountry[0].name.common} */}  
-        <h1>{country.name}</h1>
-        <table>
-            <tbody>
-                <tr>
-                    <td className="minWidthTd">
+    <div>
+        <div className="marginBottomDiv">
+
+            {/* v3 api */}
+            {/* {filteredCountry[0].name.common} */}  
+            <div>
+            <h1>{country.name}</h1>
+            </div>
+            <div>
+                <div className="divContainerCapital">
+                    <div className="divContainerCapitalChild">
                     capital 
-                    </td>
-                    <td>
+                    </div>
+                    <div>
                     {country.capital}
-                    </td>
-                </tr>
-                <tr>
-                <td className="minWidthTd">
+                    </div>
+                </div>
+                <div className="divContainerCapital">
+                <div className="divContainerCapitalChild">
                 population
-                </td>
-                <td>
+                </div>
+                <div>
                     {country.population}
-                </td>
-                </tr>
-            </tbody>
-        </table>
-        <h2>languages</h2>
-        <ul>
-            {country.languages.map(language => <li key={language.name}>{language.name}</li>)}
-        </ul> 
-        {/* V3 api*/}
-        {/* <img src={filteredCountry[0].flags.png} className="countryFlag" alt={filteredCountry[0].name + " flag"}/> */}
-        <img src={country.flag} className="countryFlag" alt={country.name + " flag"}/>
-        </td>
-    </tr>
+                </div>
+                </div>
+            </div>
+            <div>
+            <h2>Languages</h2>
+                <ul>
+                    {country.languages.map(language => <li key={language.name}>{language.name}</li>)}
+                </ul> 
+            </div>
+                {/* V3 api*/}
+                {/* <img src={filteredCountry[0].flags.png} className="countryFlag" alt={filteredCountry[0].name + " flag"}/> */}
+            <div>
+                <img src={country.flag} className="countryFlag" alt={country.name + " flag"}/>
+            </div>
+        </div>
+    <Weather country={country}/>
+    </div>
+    
 )
 
 export default CountryInformation;

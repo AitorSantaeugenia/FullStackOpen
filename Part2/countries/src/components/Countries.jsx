@@ -15,7 +15,7 @@ const Countries = ({ countries, country }) => {
       }
     
       if (filteredCountry.length > 10) {
-        return 'Too many matches, specify another filter'
+        return 'Too many matches, specify more'
     
       } else if (filteredCountry.length === 1) {
         return (
@@ -24,14 +24,9 @@ const Countries = ({ countries, country }) => {
       } else {
         return (
           <div>
-            <table>
-              <tbody>
               {filteredCountry.map(country =>
                 <SingleCountry country={country} />             
               )}
-              </tbody>
-            </table>
-           
           </div>
         )
       }

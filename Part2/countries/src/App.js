@@ -11,7 +11,7 @@ function App() {
   //Better use v2.0 to not have a problem with maps in language
   //https://restcountries.com/v3.1/all - We will try it later again with v3
   useEffect(() => {
-    axios.get("  https://restcountries.com/v2/all").then((response) => {
+    axios.get("https://restcountries.com/v2/all").then((response) => {
       setCountries(response.data);
     });
   }, []);

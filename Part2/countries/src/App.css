@@ -47,10 +47,6 @@ html{
   border:1px solid black;
 }
 
-.minWidthTd{
-  min-width: 100px;
-}
-
 .btnCountries{
   background-color: white;
   border-radius:5px;
@@ -64,9 +60,42 @@ html{
 
 .marginBottomDiv{
   border:1px solid black;
+  padding: 10px;
 }
 
-
-table{
-  border-collapse:collapse; 
+ .singleCountryContainer{
+  display:flex;
+  flex-direction: column;
  }
+
+.divCityTitle{
+  display:flex;
+  min-width: 200px;
+}
+
+.divContainerCapital{
+  display:flex;
+}
+
+.divContainerCapitalChild{
+  min-width: 100px;
+}
+.weatherContainer{
+  display:flex;
+  flex-direction: column;
+  border:1px solid black;
+  padding:10px;
+  margin-bottom:20px;
+}
+
+.weatherIcon{
+  max-width: 80px;
+}
+
+.singleCountryContainerButton{
+  display:flex;
+}
+
+.formFilter{
+  margin-bottom:20px;
+}

@@ -10,17 +10,23 @@ const SingleCountry = ({country}) => {
     }
 
     return(
-        <>
-        <tr> 
+        <div className="singleCountryContainer">
             {/* v3 */}
             {/* {country.name.common} */}
-            <td>
-            {country.name}
-            </td>
-            <td><button className="btnCountries" onClick={handleClick}>Show more</button></td>
-        </tr>
-        {state && <CountryInformation country={country}/>}
-        </>
+            <div className="singleCountryContainerButton">
+                <div className="divCityTitle">
+                    <span >
+                    {country.name}
+                    </span>
+                </div>
+
+                <div>
+                <span><button className="btnCountries" onClick={handleClick}>Show more</button></span><br></br>
+                    {/* {state && <CountryInformation country={country}/>} */}
+                </div>
+            </div>
+            {state && <CountryInformation country={country}/>}
+        </div>
     )
 }
 
