@@ -12,7 +12,7 @@ const App = () => {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3001/persons").then((response) => {
+    axios.get("http://localhost:3000/persons").then((response) => {
       setPersons(response.data);
     });
   }, []);
@@ -30,9 +30,13 @@ const App = () => {
     } else if (newObject.name === "") {
       alert(`Please insert a correct name.`);
     } else {
-      setPersons(persons.concat(newObject));
-      setNewName("");
-      setNewNumber("");
+      axios
+        .post("http://localhost:3000/persons", newObject)
+        .then((response) => {
+          setPersons(persons.concat(response.data));
+          setNewName("");
+          setNewNumber("");
+        });
     }
   };
 
