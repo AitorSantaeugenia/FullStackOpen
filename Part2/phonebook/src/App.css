@@ -69,3 +69,13 @@ html{
 .btnPhonebook:hover{
   background-color:rgba(212, 212, 212, 0.24);
 }
+
+.error {
+  color: rgb(28, 150, 12);
+  background: lightgrey;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
