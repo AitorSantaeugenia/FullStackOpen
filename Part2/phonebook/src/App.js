@@ -3,6 +3,7 @@ import "./App.css";
 import FilterForm from "./components/FilterForm";
 import Form from "./components/Form";
 import PersonData from "./components/PersonData";
+import Notification from "./components/Notification";
 import services from "./services/services";
 
 const App = () => {
@@ -10,6 +11,8 @@ const App = () => {
   const [newName, setNewName] = useState("");
   const [newNumber, setNewNumber] = useState("");
   const [filter, setFilter] = useState("");
+  //msg null to add the value later and back to null after 3 secs
+  const [addingMsg, setAddingMsg] = useState(null);
 
   useEffect(() => {
     services.getAll().then((response) => {
@@ -52,6 +55,11 @@ const App = () => {
     } else {
       services.create(newObject).then((response) => {
         setPersons(persons.concat(response.data));
+        //we show msg and after 3 secs, null again
+        setAddingMsg(`Added ${response.data.name}`);
+        setTimeout(() => {
+          setAddingMsg(null);
+        }, 3000);
       });
     }
     setNewName("");
@@ -90,6 +98,7 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <Notification message={addingMsg} />
       <FilterForm filter={filter} handleFilter={handleFilter} />
       <Form
         addNewPerson={addNewPerson}
