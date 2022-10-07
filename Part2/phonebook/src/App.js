@@ -4,6 +4,7 @@ import FilterForm from "./components/FilterForm";
 import Form from "./components/Form";
 import PersonData from "./components/PersonData";
 import axios from "axios";
+import services from "./services/services";
 
 const App = () => {
   const [persons, setPersons] = useState([]);
@@ -12,7 +13,7 @@ const App = () => {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:3000/persons").then((response) => {
+    services.getAll().then((response) => {
       setPersons(response.data);
     });
   }, []);
@@ -30,13 +31,11 @@ const App = () => {
     } else if (newObject.name === "") {
       alert(`Please insert a correct name.`);
     } else {
-      axios
-        .post("http://localhost:3000/persons", newObject)
-        .then((response) => {
-          setPersons(persons.concat(response.data));
-          setNewName("");
-          setNewNumber("");
-        });
+      services.create(newObject).then((response) => {
+        setPersons(persons.concat(response.data));
+        setNewName("");
+        setNewNumber("");
+      });
     }
   };
 
