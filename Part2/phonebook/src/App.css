@@ -58,3 +58,14 @@ html{
 .inputMarginLeft{
   margin-left:16px;
 }
+
+.btnPhonebook{
+  background-color: white;
+  border-radius:5px;
+  border-color: grey;
+  cursor:pointer;
+}
+
+.btnPhonebook:hover{
+  background-color:rgba(212, 212, 212, 0.24);
+}
