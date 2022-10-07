@@ -41,26 +41,58 @@ const App = () => {
 
       if (confirm) {
         const updatedPerson = { ...updatePerson, number: newNumber };
-        services.update(updatePerson.id, updatedPerson).then((response) => {
-          // console.log(response);
-          setPersons(
-            persons.map((person) =>
-              person.id !== updatePerson.id ? person : response.data
-            )
-          );
-        });
+        services
+          .update(updatePerson.id, updatedPerson)
+          .then((response) => {
+            // console.log(response);
+            setPersons(
+              persons.map((person) =>
+                person.id !== updatePerson.id ? person : response.data
+              )
+            );
+
+            setAddingMsg(`Updated number to ${response.data.name}`);
+            setTimeout(() => {
+              setAddingMsg(null);
+            }, 3000);
+          })
+          .catch((error) => {
+            setAddingMsg(
+              `Information of ${updatedPerson.name} has already been removed from server.`
+            );
+            //After 3 sec, msg to null and reload the page
+            setTimeout(() => {
+              setAddingMsg(null);
+
+              window.location.reload();
+            }, 3000);
+          });
       }
     } else if (newObject.name === "") {
-      alert(`Please insert a correct name.`);
+      setAddingMsg(`Please insert a correct name.`);
+      //After 3 sec, msg to null and reload the page
+      setTimeout(() => {
+        setAddingMsg(null);
+
+        window.location.reload();
+      }, 3000);
     } else {
-      services.create(newObject).then((response) => {
-        setPersons(persons.concat(response.data));
-        //we show msg and after 3 secs, null again
-        setAddingMsg(`Added ${response.data.name}`);
-        setTimeout(() => {
-          setAddingMsg(null);
-        }, 3000);
-      });
+      services
+        .create(newObject)
+        .then((response) => {
+          setPersons(persons.concat(response.data));
+          //we show msg and after 3 secs, null again
+          setAddingMsg(`Added ${response.data.name}`);
+          setTimeout(() => {
+            setAddingMsg(null);
+          }, 3000);
+        })
+        .catch((error) => {
+          setAddingMsg(`An unexpected error happened.`);
+          setTimeout(() => {
+            setAddingMsg(null);
+          }, 3000);
+        });
     }
     setNewName("");
     setNewNumber("");
@@ -88,9 +120,22 @@ const App = () => {
     const confirm = window.confirm(`Delete ${deletePerson.name}?`);
 
     if (confirm) {
-      services.remove(id).then((toRemovePerson) => {
-        persons.map((person) => (person.id !== id ? person : toRemovePerson));
-      });
+      services
+        .remove(id)
+        .then((toRemovePerson) => {
+          persons.map((person) => (person.id !== id ? person : toRemovePerson));
+
+          setAddingMsg(`Removed ${deletePerson.name}.`);
+          setTimeout(() => {
+            setAddingMsg(null);
+          }, 3000);
+        })
+        .catch((error) => {
+          setAddingMsg(`An unexpected error happened.`);
+          setTimeout(() => {
+            setAddingMsg(null);
+          }, 3000);
+        });
       setPersons(persons.filter((person) => person.id !== id));
     }
   };
