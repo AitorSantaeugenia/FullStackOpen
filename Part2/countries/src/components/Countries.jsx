@@ -3,11 +3,6 @@ import React from 'react'
 const Countries = ({ countries, country }) => {
     let filteredCountry = [];
 
-    // console.log(countries)
-    // //console.log(countries[1].name.common)
-    // // console.log(country)
-    // console.log(filteredCountry)
-
     if (country.length > 0) {
         filteredCountry = countries.filter(filter => 
             //V3 api
@@ -48,12 +43,7 @@ const Countries = ({ countries, country }) => {
             </table>
             <h2>languages</h2>
                <ul>
-                {/* {console.log(filteredCountry)}
-                {console.log(filteredCountry[0].languages)}
-                {filteredCountry[0].languages.map(lang => <li>{lang}</li>)} 
-                {/* <li>{filteredCountry[0].languages.spa}</li> */}
                 {filteredCountry[0].languages.map(language => <li key={language.name}>{language.name}</li>)}
-                
               </ul> 
               {/* V3 api*/}
               {/* <img src={filteredCountry[0].flags.png} className="countryFlag" alt={filteredCountry[0].name + " flag"}/> */}
