@@ -63,8 +63,10 @@ html{
 }
 
 .marginBottomDiv{
-  margin-bottom:80px;
   border:1px solid black;
-  padding:5px;
-  max-width: 60vw;
 }
+
+
+table{
+  border-collapse:collapse; 
+ }
