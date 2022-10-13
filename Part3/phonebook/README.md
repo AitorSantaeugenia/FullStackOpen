@@ -9,6 +9,7 @@
 
 ### Deployment
 - Deploy with Heroku at -> https://pa3-phonebook-backend.herokuapp.com/
+- Done in another repo, cos Heroku, we are just copy/pasting all we are doing here, to that repo -> https://github.com/AitorSantaeugenia/phonebook
 
 ~~~ 
 In this part our focus shifts towards the backend, that is, towards implementing functionality on the server side of the stack. 
