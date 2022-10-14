@@ -88,7 +88,7 @@ const App = () => {
           }, 3000);
         })
         .catch((error) => {
-          setAddingMsg(`An unexpected error happened.`);
+          setAddingMsg(`${error.response.data.error}`);
           setTimeout(() => {
             setAddingMsg(null);
           }, 3000);
@@ -131,7 +131,7 @@ const App = () => {
           }, 3000);
         })
         .catch((error) => {
-          setAddingMsg(`An unexpected error happened.`);
+          setAddingMsg(`${error.response.data.error}`);
           setTimeout(() => {
             setAddingMsg(null);
           }, 3000);
