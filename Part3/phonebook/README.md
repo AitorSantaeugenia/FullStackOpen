@@ -8,7 +8,8 @@
 - d) Validation and ESLint -| Exercises 3.19 - 3.21 && 3.22
 
 ### Deployment
-- Deploy with Heroku at -> https://pa3-phonebook-backend.herokuapp.com/
+<code>November 27º heroku will not be free anymore, remember me with an issue if you want to see this deployed in another service</code>
+- Deployed with Heroku -> https://pa3-phonebook-backend.herokuapp.com/
 - Done in another repo, cos Heroku, we are just copy/pasting all we are doing here, to that repo -> https://github.com/AitorSantaeugenia/phonebook
 
 ~~~ 
