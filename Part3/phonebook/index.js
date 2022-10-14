@@ -25,11 +25,8 @@ app.get("/api/persons", (request, response) => {
 });
 
 //we will change this later prob
-app.post("/api/persons", (request, response) => {
+app.post("/api/persons", (request, response, next) => {
   const body = request.body;
-  console.log(body);
-  console.log(body.name);
-  console.log(body.number);
 
   if (body.name === undefined || body.number === undefined) {
     return response.status(400).json({ error: "Name or number missing" });
@@ -43,16 +40,21 @@ app.post("/api/persons", (request, response) => {
   person
     .save()
     .then((savedPerson) => {
-      console.log("test", savedPerson);
       response.json(savedPerson);
     })
-    .catch((error) => console.log(`Error: ${error}`));
+    .catch((error) => next(error));
 });
 
-app.get("/api/persons/:id", (request, response) => {
-  Person.findById(request.params.id).then((person) => {
-    response.json(person);
-  });
+app.get("/api/persons/:id", (request, response, next) => {
+  Person.findById(request.params.id)
+    .then((person) => {
+      if (person) {
+        response.json(person);
+      } else {
+        response.status(404).end();
+      }
+    })
+    .catch((error) => next(error));
 });
 
 app.get("/info", (request, response) => {
@@ -70,9 +72,7 @@ app.get("/info", (request, response) => {
   });
 });
 
-app.delete("/api/persons/:id", (request, response) => {
-  console.log(request.params.id);
-
+app.delete("/api/persons/:id", (request, response, next) => {
   Person.findByIdAndRemove(request.params.id)
     .then((result) => {
       response.status(204).end();
@@ -85,6 +85,16 @@ const unknownEndpoint = (request, response) => {
 };
 
 app.use(unknownEndpoint);
+
+const errorHandler = (error, request, response, next) => {
+  if (error.name === "CastError") {
+    return response.status(400).send({ error: "malformatted id" });
+  }
+
+  next(error);
+};
+
+app.use(errorHandler);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
