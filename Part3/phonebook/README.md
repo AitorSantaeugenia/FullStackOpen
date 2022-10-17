@@ -2,10 +2,10 @@
 
 ## Part 3 - Exercises 3.1. - 3.22.
 ### Programming a server with NodeJS and Express
-- a) Node.js and Express -| Exercises 3.1 - 3.6 && 3.7 - 3.8
-- b) Deploying app to internet -| Exercises 3.9 - 3.11
-- c) Saving data to MongoDB -| Exercises 3.12 && 3.13 - 3.14 && 3.15 - 3.18
-- d) Validation and ESLint -| Exercises 3.19 - 3.21 && 3.22
+- a) Node.js and Express -| Exercises 3.1. - 3.6. && 3.7. - 3.8.
+- b) Deploying app to internet -| Exercises 3.9. - 3.11.
+- c) Saving data to MongoDB -| Exercises 3.12. && 3.13. - 3.14. && 3.15. - 3.18.
+- d) Validation and ESLint -| Exercises 3.19. - 3.21. && 3.22.
 
 ### Deployment
 <code>November 27º heroku will not be free anymore, remember me with an issue if you want to see this deployed in another service</code>
