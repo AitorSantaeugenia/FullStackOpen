@@ -2,11 +2,11 @@
 
 ## Part 2 - Exercises 2.1.-2.20.
 ### Comunicating with the server
-- a) Rendering a collection, modules -| Exercises 2.1 - 2.5
-- b) Forms -| Exercises 2.6 - 2.10
-- c) Getting data from server -| Exercises 2.11 - 2.14
-- d) Altering data in server -| Exercises 2.15 - 2.18
-- e) Adding styles to React app -| Exercises 2.19 - 2.20
+- a) Rendering a collection, modules -| Exercises 2.1. - 2.5.
+- b) Forms -| Exercises 2.6. - 2.10.
+- c) Getting data from server -| Exercises 2.11. - 2.14.
+- d) Altering data in server -| Exercises 2.15. - 2.18.
+- e) Adding styles to React app -| Exercises 2.19. - 2.20.
 
 ~~~ 
 Let's continue our introduction to React. First, we will take a look at how to render a data collection,
