@@ -3,7 +3,7 @@
 ## Part 0 - Exercises 0.1.-0.6. (0.4.-0.6., submit)
 ### Fundamentals of web apps
 - a) General info
-- b) Fundamentals of web app -| Exercises 0.1 - 0.6
+- b) Fundamentals of web app -| Exercises 0.1. - 0.6.
 
 <div align="center">
 
