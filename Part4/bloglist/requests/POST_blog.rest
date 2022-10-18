@@ -1,12 +1,11 @@
 POST http://localhost:3003/api/blogs HTTP/1.1
-
 Content-Type: application/json
 
 {
     "title": "Aitor's Github",
     "author": "Aitor J. Santaeugenia Marí",
     "url": "https://github.com/AitorSantaeugenia",
-    "likes": 77
+    "likes": "77"
 }
 
 //this sheet is not working
