@@ -1,6 +1,6 @@
 const listHelper = require("../utils/list_helper");
 
-describe("blog with most likes", () => {
+describe("(favoriteBlog) - blog with most likes", () => {
   const expectedAuthor = {
     title: "Canonical string reduction",
     author: "Edsger W. Dijkstra",

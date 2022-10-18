@@ -2,7 +2,7 @@
 
 const listHelper = require("../utils/list_helper");
 
-describe("total likes of one blog", () => {
+describe("(totalLikes) - total likes of one blog", () => {
   const listWithOneBlog = [
     {
       _id: "5a422aa71b54a676234d17f8",
@@ -21,7 +21,7 @@ describe("total likes of one blog", () => {
   });
 });
 
-describe("total likes of six blogs", () => {
+describe("(totalLikes) - total likes of all blogs", () => {
   const blogs = [
     {
       _id: "5a422a851b54a676234d17f7",
