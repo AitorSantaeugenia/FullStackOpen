@@ -15,7 +15,7 @@ beforeEach(async () => {
   await Promise.all(promiseArray);
 });
 
-describe("(4.8, step1) - bloglist API tests:", () => {
+describe("(4.8, step1) - API tests:", () => {
   test("blogs are returned as JSON", async () => {
     await api
       .get("/api/blogs")
@@ -27,6 +27,14 @@ describe("(4.8, step1) - bloglist API tests:", () => {
     const response = await api.get("/api/blogs");
 
     expect(response.body).toHaveLength(helper.initialBlogs.length);
+  });
+});
+
+describe("(4.9*, step2) - id definition:", () => {
+  test("verify if the unique identifier property `id` exists", async () => {
+    const response = await api.get("/api/blogs");
+
+    expect(response.body[0].id).toBeDefined();
   });
 });
 
