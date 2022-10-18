@@ -39,9 +39,35 @@ const mostBlogs = (blogs) => {
   return result.find((element) => element.blogs === maximum);
 };
 
+const mostLikes = (blogs) => {
+  let holder = {};
+
+  blogs.forEach(function (d) {
+    if (holder.hasOwnProperty(d.author)) {
+      holder[d.author] = holder[d.author] + d.likes;
+    } else {
+      holder[d.author] = d.likes;
+    }
+  });
+
+  let obj2 = [];
+
+  for (let prop in holder) {
+    obj2.push({ author: prop, likes: holder[prop] });
+  }
+
+  let maximum = Math.max.apply(
+    Math,
+    obj2.map((o) => o.likes)
+  );
+
+  return obj2.find((element) => element.likes === maximum);
+};
+
 module.exports = {
   dummy,
   totalLikes,
   favoriteBlog,
   mostBlogs,
+  mostLikes,
 };
