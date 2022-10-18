@@ -17,6 +17,7 @@ describe("total likes of one blog", () => {
   test("when the list has only one blog, equals the likes of that", () => {
     const result = listHelper.totalLikes(listWithOneBlog);
     expect(result).toBe(5);
+    // expect(result).toBe(listWithOneBlog[0].likes);
   });
 });
 
@@ -72,8 +73,17 @@ describe("total likes of six blogs", () => {
     },
   ];
 
+  //   const sumTotalLikes = (blogs) => {
+  //     let total = 0;
+  //     for (let index = 0; index < blogs.length; index++) {
+  //       total += blogs[index].likes;
+  //     }
+  //     return Number(total);
+  //   };
+
   test("when the list has more than one blog, equals the likes of that", () => {
     const result = listHelper.totalLikes(blogs);
     expect(result).toBe(36);
+    // expect(result).toEqual(sumTotalLikes(blogs));
   });
 });
