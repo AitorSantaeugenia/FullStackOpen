@@ -23,8 +23,25 @@ const favoriteBlog = (blogs) => {
   return returnedObj;
 };
 
+const mostBlogs = (blogs) => {
+  const result = Object.entries(
+    blogs.reduce((acc, { author }) => {
+      acc[author] = (acc[author] || 0) + 1;
+      return acc;
+    }, {})
+  ).map(([k, v]) => ({ author: k, blogs: v }));
+
+  let maximum = Math.max.apply(
+    Math,
+    result.map((o) => o.blogs)
+  );
+
+  return result.find((element) => element.blogs === maximum);
+};
+
 module.exports = {
   dummy,
   totalLikes,
   favoriteBlog,
+  mostBlogs,
 };
