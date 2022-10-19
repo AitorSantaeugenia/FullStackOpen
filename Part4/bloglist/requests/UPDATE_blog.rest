@@ -1,0 +1,9 @@
+PUT http://localhost:3000/api/blogs/634f4af65b76453dea59f98c HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "Aitor's Github",
+    "author": "Aitor J. Santaeugenia Marí",
+    "url": "https://github.com/AitorSantaeugenia",
+    "likes": "1989"
+}

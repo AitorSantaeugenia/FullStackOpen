@@ -11,7 +11,7 @@ beforeEach(async () => {
   await Blog.deleteMany({});
 
   const blogObject = helper.initialBlogs.map((blog) => new Blog(blog));
-  const promiseArray = blogObject.map((blog) => blog.save());
+  const promiseArray = blogObject.map((e) => e.save());
   await Promise.all(promiseArray);
 });
 
@@ -56,7 +56,7 @@ describe("(4.10 - 4.12) - POST /api/blogs:", () => {
     const blogsInDB = await helper.blogsInDb();
     expect(blogsInDB).toHaveLength(helper.initialBlogs.length + 1);
 
-    const contents = blogsInDB.map((n) => n.title);
+    const contents = blogsInDB.map((e) => e.title);
     expect(contents).toContain("Canonical string reduction");
   });
 
@@ -107,9 +107,29 @@ describe("(4.10 - 4.12) - POST /api/blogs:", () => {
 
       expect(blogsInDB).toHaveLength(helper.initialBlogs.length - 1);
 
-      const contents = blogsInDB.map((r) => r.title);
+      const contents = blogsInDB.map((e) => e.title);
 
       expect(contents).not.toContain(blogToDelete.title);
+    });
+  });
+
+  describe("(4.14) - UPDATE request:", () => {
+    test("updating likes from a blog in the DB", async () => {
+      const currentBlogsInDB = await helper.blogsInDb();
+      //we updating last one created
+      const index = currentBlogsInDB.length - 1;
+      const blogToUpdate = currentBlogsInDB[index];
+      blogToUpdate.likes = 2;
+
+      await api
+        .put(`/api/blogs/${blogToUpdate.id}`)
+        .send(blogToUpdate)
+        .expect(200);
+
+      const blogsInDB = await helper.blogsInDb();
+      const contents = blogsInDB.map((e) => e.likes);
+
+      expect(contents).toContain(blogToUpdate.likes);
     });
   });
 });
