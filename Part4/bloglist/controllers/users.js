@@ -12,6 +12,16 @@ usersRouter.get("/", async (request, response) => {
 usersRouter.post("/", async (request, response) => {
   const { username, name, password } = request.body;
 
+  if (username === undefined || username.length < 3) {
+    return response
+      .status(400)
+      .send({ error: "username is required and min. 3 char. length" });
+  } else if (password === undefined || password.length < 3) {
+    return response
+      .status(400)
+      .send({ error: "password is required and min. 3 char. length" });
+  }
+
   const existingUser = await User.findOne({ username });
   if (existingUser) {
     return response.status(400).json({
