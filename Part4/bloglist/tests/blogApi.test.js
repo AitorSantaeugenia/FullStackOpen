@@ -21,7 +21,7 @@ describe("(4.8, step1) - API tests:", () => {
       .get("/api/blogs")
       .expect(200)
       .expect("Content-Type", /application\/json/);
-  }, 100000);
+  });
 
   test("all blogs are returned", async () => {
     const response = await api.get("/api/blogs");
@@ -38,7 +38,7 @@ describe("(4.9*, step2) - id definition - GET /api/blogs:", () => {
   });
 });
 
-describe("(4.10, step3) - POST /api/blogs:", () => {
+describe("(4.10 - 4.12) - POST /api/blogs:", () => {
   test("a valid blog can be added", async () => {
     const newBlog = {
       title: "Aitor's Github",
@@ -60,7 +60,7 @@ describe("(4.10, step3) - POST /api/blogs:", () => {
     expect(contents).toContain("Canonical string reduction");
   });
 
-  test("if property likes is missing ", async () => {
+  test("if property likes is missing, return 0", async () => {
     const newBlog = {
       title: "Aitor's Github 1",
       author: "Aitor J. Santaeugenia Marí",
@@ -81,6 +81,19 @@ describe("(4.10, step3) - POST /api/blogs:", () => {
     const likes = contents.likes ? contents.likes : 0;
 
     expect(likes).toBe(0);
+  });
+
+  test("if title and url are missing, return status(400) bad request", async () => {
+    const newBlog = {
+      author: "Aitor's Github 111",
+      likes: 111,
+    };
+
+    await api.post("/api/blogs").send(newBlog).expect(400);
+
+    const blogsInDB = await helper.blogsInDb();
+
+    expect(blogsInDB).toHaveLength(helper.initialBlogs.length);
   });
 });
 
