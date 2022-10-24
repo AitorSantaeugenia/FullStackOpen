@@ -17,3 +17,5 @@ The course also contains a section on GraphQL, a modern alternative to REST APIs
 ### Part2 - [Check my solution](https://github.com/AitorSantaeugenia/FullStackOpen/tree/master/Part2).
 ### Part3 - [Check my solution](https://github.com/AitorSantaeugenia/FullStackOpen/tree/master/Part3).
 ### Part4 - [Check my solution](https://github.com/AitorSantaeugenia/FullStackOpen/tree/master/Part4).
+
+   ![Certificate](https://user-images.githubusercontent.com/14861253/197454364-771b0dea-0691-489e-b02b-1469372f9d7c.png)
