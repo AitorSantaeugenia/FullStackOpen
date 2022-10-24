@@ -175,13 +175,13 @@ describe("(4.10 - 4.12) - POST /api/blogs:", () => {
     expect(likes).toBe(0);
   });
 
-  test("if title and url are missing, return status(401) Unauthorized", async () => {
+  test("if title and url are missing, return status(400) bad request", async () => {
     const newBlog = {
       author: "Aitor's Github 111",
       likes: 111,
     };
 
-    await api.post("/api/blogs").send(newBlog).expect(401);
+    await api.post("/api/blogs").send(newBlog).expect(400).set(headers);
 
     const blogsInDB = await helper.blogsInDb();
 
