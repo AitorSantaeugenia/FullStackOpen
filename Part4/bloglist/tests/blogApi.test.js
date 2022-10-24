@@ -189,17 +189,37 @@ describe("(4.10 - 4.12) - POST /api/blogs:", () => {
   });
 
   describe("(4.13) - DELETE request", () => {
-    test("deleting saved blog from DB", async () => {
-      const currentBlogsInDB = await helper.blogsInDb();
-      const blogToDelete = currentBlogsInDB[0];
+    //This one is for the 4.13
+    // test("deleting saved blog from DB", async () => {
+    //   const currentBlogsInDB = await helper.blogsInDb();
+    //   const blogToDelete = currentBlogsInDB[0];
 
-      await api.delete(`/api/blogs/${blogToDelete.id}`).expect(204);
+    //   await api.delete(`/api/blogs/${blogToDelete.id}`).expect(204);
 
-      const blogsInDB = await helper.blogsInDb();
+    //   const blogsInDB = await helper.blogsInDb();
 
-      expect(blogsInDB).toHaveLength(helper.initialBlogs.length - 1);
+    //   expect(blogsInDB).toHaveLength(helper.initialBlogs.length - 1);
 
-      const contents = blogsInDB.map((e) => e.title);
+    //   const contents = blogsInDB.map((e) => e.title);
+
+    //   expect(contents).not.toContain(blogToDelete.title);
+    // });
+
+    //This one is for the 4.21 once we have jwt
+    test("Logged user deleting a saved blog", async () => {
+      const currentBlogsInDb = await helper.blogsInDb();
+      const blogToDelete = currentBlogsInDb[0];
+
+      await api
+        .delete(`/api/blogs/${blogToDelete.id}`)
+        .expect(204)
+        .set(headers);
+
+      const blogsAfterDelete = await helper.blogsInDb();
+
+      expect(blogsAfterDelete).toHaveLength(helper.initialBlogs.length - 1);
+
+      const contents = blogsAfterDelete.map((e) => e.title);
 
       expect(contents).not.toContain(blogToDelete.title);
     });
