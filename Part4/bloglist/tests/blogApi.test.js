@@ -41,7 +41,7 @@ beforeEach(async () => {
         likes: blog.likes ? blog.likes : 0,
       })
   );
-  const promiseArray = blogObject.map((blog) => {
+  blogObject.map((blog) => {
     blog.save();
     user.blogs = user.blogs.concat(blog.id);
   });
