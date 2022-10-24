@@ -94,7 +94,6 @@ describe("(4.8, step1) - API tests:", () => {
     await api
       .get("/api/blogs")
       .expect(200)
-      .set(headers)
       .expect("Content-Type", /application\/json/);
   });
 
