@@ -13,13 +13,22 @@ const bcrypt = require("bcryptjs");
 beforeEach(async () => {
   await User.deleteMany({});
 
-  const passwordHash = await bcrypt.hash("secret", 10);
+  let headers;
+
+  const passwordHash = await bcrypt.hash("password", 10);
+
   const user = new User({
     username: "administrator",
     name: "Aitor",
     blogs: [],
     passwordHash,
   });
+
+  const loginUser = await api.post("/api/login").send(user);
+
+  headers = {
+    Authorization: `bearer ${loginUser.body.token}`,
+  };
 
   await user.save();
 });
@@ -66,10 +75,26 @@ describe("(4.17 step5) blogs.user._id match the first user _id", () => {
 });
 
 describe("(4.8, step1) - API tests:", () => {
+  let headers;
+
+  beforeEach(async () => {
+    const user = {
+      username: "root",
+      password: "password",
+    };
+
+    const loginUser = await api.post("/api/login").send(user);
+
+    headers = {
+      Authorization: `bearer ${loginUser.body.token}`,
+    };
+  });
+
   test("blogs are returned as JSON", async () => {
     await api
       .get("/api/blogs")
       .expect(200)
+      .set(headers)
       .expect("Content-Type", /application\/json/);
   });
 
@@ -89,6 +114,21 @@ describe("(4.9*, step2) - id definition - GET /api/blogs:", () => {
 });
 
 describe("(4.10 - 4.12) - POST /api/blogs:", () => {
+  let headers;
+
+  beforeEach(async () => {
+    const user = {
+      username: "administrator",
+      password: "password",
+    };
+
+    const loginUser = await api.post("/api/login").send(user);
+
+    headers = {
+      Authorization: `bearer ${loginUser.body.token}`,
+    };
+  });
+
   test("a valid blog can be added", async () => {
     const newBlog = {
       title: "Aitor's Github",
@@ -101,6 +141,7 @@ describe("(4.10 - 4.12) - POST /api/blogs:", () => {
       .post("/api/blogs")
       .send(newBlog)
       .expect(201)
+      .set(headers)
       .expect("Content-Type", /application\/json/);
 
     const blogsInDB = await helper.blogsInDb();
@@ -121,6 +162,7 @@ describe("(4.10 - 4.12) - POST /api/blogs:", () => {
       .post("/api/blogs")
       .send(newBlog)
       .expect(201)
+      .set(headers)
       .expect("Content-Type", /application\/json/);
 
     const blogsInDB = await helper.blogsInDb();
@@ -133,13 +175,13 @@ describe("(4.10 - 4.12) - POST /api/blogs:", () => {
     expect(likes).toBe(0);
   });
 
-  test("if title and url are missing, return status(400) bad request", async () => {
+  test("if title and url are missing, return status(401) Unauthorized", async () => {
     const newBlog = {
       author: "Aitor's Github 111",
       likes: 111,
     };
 
-    await api.post("/api/blogs").send(newBlog).expect(400);
+    await api.post("/api/blogs").send(newBlog).expect(401);
 
     const blogsInDB = await helper.blogsInDb();
 
