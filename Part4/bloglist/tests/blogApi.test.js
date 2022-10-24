@@ -5,14 +5,64 @@ const app = require("../app");
 const api = supertest(app);
 
 const Blog = require("../models/blog");
+const User = require("../models/user");
+
 const helper = require("./test_helper");
+const bcrypt = require("bcryptjs");
+
+beforeEach(async () => {
+  await User.deleteMany({});
+
+  const passwordHash = await bcrypt.hash("secret", 10);
+  const user = new User({
+    username: "administrator",
+    name: "Aitor",
+    blogs: [],
+    passwordHash,
+  });
+
+  await user.save();
+});
 
 beforeEach(async () => {
   await Blog.deleteMany({});
 
-  const blogObject = helper.initialBlogs.map((blog) => new Blog(blog));
-  const promiseArray = blogObject.map((e) => e.save());
-  await Promise.all(promiseArray);
+  const users = await User.find({});
+  const user = users[0];
+  const id = users[0].id;
+
+  const blogObject = helper.initialBlogs.map(
+    (blog) =>
+      new Blog({
+        title: blog.title,
+        author: blog.author,
+        url: blog.url,
+        user: id,
+        likes: blog.likes ? blog.likes : 0,
+      })
+  );
+  const promiseArray = blogObject.map((blog) => {
+    blog.save();
+    user.blogs = user.blogs.concat(blog.id);
+  });
+  await user.save();
+});
+
+describe("(4.17 step5) blogs.user._id match the first user _id", () => {
+  test("creators id", async () => {
+    const users = await User.find({});
+    const id = users[0]._id;
+
+    const blogs = await helper.blogsInDb();
+
+    const contents = blogs.map((response) => response.user);
+
+    // console.log(contents);
+    // console.log(users[0]._id);
+    // console.log(users[0].id);
+
+    expect(contents).toContainEqual(id);
+  });
 });
 
 describe("(4.8, step1) - API tests:", () => {
