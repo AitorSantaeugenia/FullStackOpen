@@ -54,13 +54,13 @@ const initialBlogs = [
 
 const initialUsers = [
   {
-    username: "administrator",
-    name: "administrator",
+    username: "root",
+    name: "root",
     password: "admin1234",
   },
   {
-    username: "admin",
-    name: "aitor",
+    username: "administrator",
+    name: "administrator",
     password: "qwer1234",
   },
 ];
