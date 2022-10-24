@@ -150,6 +150,18 @@ describe("(4.10 - 4.12) - POST /api/blogs:", () => {
     expect(contents).toContain("Canonical string reduction");
   });
 
+  //4.23*, step11
+  test("a valid blog without the authoration token", async () => {
+    const newBlog = {
+      title: "This shit is on fire.",
+      author: "Aitor",
+      url: "https://github.com/AitorSantaeugenia",
+      likes: 7,
+    };
+
+    await api.post("/api/blogs").send(newBlog).expect(401);
+  });
+
   test("if property likes is missing, return 0", async () => {
     const newBlog = {
       title: "Aitor's Github 1",
