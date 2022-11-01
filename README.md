@@ -1,4 +1,4 @@
-# University of Helsinki - Full Stack Open 2022-2023 - test
+# University of Helsinki - Full Stack Open 2022-2023
 <code>Started: 03-10-2022</code>
 
 ## What is this course about?
