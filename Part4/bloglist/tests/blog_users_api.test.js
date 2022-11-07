@@ -7,20 +7,20 @@ const api = supertest(app);
 const User = require("../models/user");
 const helper = require("./test_helper");
 
-// const bcrypt = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 
-// beforeEach(async () => {
-//   await User.deleteMany({});
+beforeEach(async () => {
+  await User.deleteMany({});
 
-//   const passwordHash = await bcrypt.hash("password", 10);
-//   const user = new User({
-//     username: "administrator",
-//     name: "Aitor",
-//     passwordHash,
-//   });
+  const passwordHash = await bcrypt.hash("password", 10);
+  const user = new User({
+    username: "administrator",
+    name: "Aitor",
+    passwordHash,
+  });
 
-//   await user.save();
-// });
+  await user.save();
+});
 
 describe("(USER Creation test)):", () => {
   test("POST - New user", async () => {
